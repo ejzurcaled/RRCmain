@@ -19,5 +19,5 @@ jobs:
 
       - name: Deploy to Hostinger
         run: |
-          ssh u376338418@88.223.85.159 "rm -rf /home/u376338418/public_html/rrc/*"
-          scp -r ./* u376338418@88.223.85.159:/home/u376338418/public_html/rrc/
+          ssh -p 65002 u376338418@88.223.85.159 "rm -rf /home/u376338418/public_html/rrc/*"  # Clear old files
+          scp -P 65002 -r ./* u376338418@88.223.85.159:/home/u376338418/public_html/rrc/  # Copy new files
