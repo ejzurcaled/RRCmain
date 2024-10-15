@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoadRescue Connect</title>
+
+    <!-- CSS Libraries -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css"
+    />
+    <link rel="stylesheet" href="/index.css" />
+
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-modal/3.14.3/react-modal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="index.js"></script>
+
+    <script>
+      function validatePhone(input) {
+        input.value = input.value.replace(/[^0-9*#+()-]/g, "");
+      }
+
+      $(document).ready(function () {
+        $(".timepicker").timepicker({
+          timeFormat: "HH:mm",
+          interval: 15,
+          dropdown: true,
+          scrollbar: true,
+        });
+
+        $("#allDayEventCheckbox").change(function () {
+          if (this.checked) {
+            $("#timepickerStart").val("00:00");
+            $("#timepickerEnd").val("23:59");
+          } else {
+            const currentTime = new Date();
+            const formattedStartTime = currentTime
+              .toTimeString()
+              .substring(0, 5);
+            $("#timepickerStart").val(formattedStartTime);
+
+            const endTime = new Date(currentTime.getTime() + 60 * 60 * 1000);
+            const formattedEndTime = endTime.toTimeString().substring(0, 5);
+            $("#timepickerEnd").val(formattedEndTime);
+          }
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const formData = {};
+        urlParams.forEach((value, key) => (formData[key] = value));
+
+        for (const key in formData) {
+          const inputField = document.getElementById(key);
+          if (inputField) {
+            if (inputField.tagName === "SELECT") {
+              const option = inputField.querySelector(
+                `option[value="${formData[key]}"]`
+              );
+              if (option) inputField.value = formData[key];
+            } else {
+              inputField.value = formData[key];
+            }
+          }
+        }
+      });
+
+      function initializeDropdown(dropdownNumber) {
+        const dropdownInput = document.querySelector(
+          `.dropdown${dropdownNumber}-input`
+        );
+        const dropdownList = document.querySelector(
+          `.dropdown${dropdownNumber}-list`
+        );
+
+        dropdownInput.addEventListener("click", () => {
+          dropdownList.style.display =
+            dropdownList.style.display === "block" ? "none" : "block";
+        });
+
+        dropdownList.addEventListener("click", (e) => {
+          if (e.target.tagName === "LI") {
+            dropdownInput.value = e.target.textContent;
+            dropdownList.style.display = "none";
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !dropdownInput.contains(e.target) &&
+            !dropdownList.contains(e.target)
+          ) {
+            dropdownList.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </head>
+
+  <body id="body-pd" class="bodymoto">
+    <div id="root"></div>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoadRescue Connect</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/index.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body id="body-pd" class="bodymoto">
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-modal/3.14.3/react-modal.min.js"></script>
+    <script>
+      function validatePhone(input) {
+        input.value = input.value.replace(/[^0-9*#+()-]/g, "");
+      }
+      $(document).ready(function () {
+        $(".timepicker").timepicker({
+          timeFormat: "HH:mm",
+          interval: 15,
+          dropdown: true,
+          scrollbar: true,
+        });
+
+        $("#allDayEventCheckbox").change(function () {
+          if (this.checked) {
+            // Checkbox is checked, set time to 00:00 for start and 23:59 for end
+            $("#timepickerStart").val("00:00");
+            $("#timepickerEnd").val("23:59");
+          } else {
+            // Checkbox is unchecked after being checked, set time to current time for start
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var formattedTime =
+              (hours < 10 ? "0" : "") +
+              hours +
+              ":" +
+              (minutes < 10 ? "0" : "") +
+              minutes;
+            $("#timepickerStart").val(formattedTime);
+
+            // Adjust end time by adding 1 hour to the current time
+            hours += 1;
+            if (hours >= 24) {
+              hours -= 24; // Wrap around if necessary
+            }
+            formattedTime =
+              (hours < 10 ? "0" : "") +
+              hours +
+              ":" +
+              (minutes < 10 ? "0" : "") +
+              minutes;
+            $("#timepickerEnd").val(formattedTime);
+          }
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const formData = {
+          leadidnumber:
+            "Lead ID #:" +
+            urlParams.get("leadId") +
+            " - " +
+            urlParams.get("clientname"),
+          leadidnumberhidden: urlParams.get("leadId"),
+          clientname: urlParams.get("clientname"),
+          timestamp: urlParams.get("timestamp"),
+          status: urlParams.get("status"),
+          companyname: urlParams.get("companyname"),
+          phone: urlParams.get("phone"),
+          ext: urlParams.get("ext"),
+          email: urlParams.get("email"),
+          address: urlParams.get("address"),
+          unit: urlParams.get("unit"),
+          city: urlParams.get("city"),
+          region: urlParams.get("region"),
+          postalcode: urlParams.get("postalcode"),
+          country: urlParams.get("country"),
+          servicearea: urlParams.get("servicearea"),
+          jobtype: urlParams.get("jobtype"),
+          jobsource: urlParams.get("jobsource"),
+          jobdescription: urlParams.get("jobdescription"),
+          datepicker: urlParams.get("datepicker"),
+          timepickerStart: urlParams.get("timepickerStart"),
+          datepickerEnd: urlParams.get("datepickerEnd"),
+          timepickerEnd: urlParams.get("timepickerEnd"),
+          specialjobs: urlParams.get("specialjobs"),
+          highprofitjobs: urlParams.get("highprofitjobs"),
+          cancellationfee: urlParams.get("cancellationfee"),
+          cancellationreason: urlParams.get("cancellationreason"),
+          year: urlParams.get("year"),
+          make: urlParams.get("make"),
+          model: urlParams.get("model"),
+          agentname: urlParams.get("agentname"),
+          inscompname: urlParams.get("inscompname"),
+          insagentname: urlParams.get("insagentname"),
+          insponumber: urlParams.get("insponumber"),
+          insGOA: urlParams.get("insGOA"),
+          insEMAIL: urlParams.get("insEMAIL"),
+          persongivequote: urlParams.get("persongivequote"),
+          pricequote: urlParams.get("pricequote"),
+          eta: urlParams.get("eta"),
+          transactionnumber: urlParams.get("transactionnumber"),
+          transactiongrandtotal: urlParams.get("transactiongrandtotal"),
+          dispatchername: urlParams.get("dispatchername"),
+          dispatchedby: urlParams.get("dispatchedby"),
+          vendorquote1: urlParams.get("vendorquote1"),
+          vendorquote2: urlParams.get("vendorquote2"),
+          vendorquote3: urlParams.get("vendorquote3"),
+          vendorquote4: urlParams.get("vendorquote4"),
+          vendorquote5: urlParams.get("vendorquote5"),
+          vendorquote6: urlParams.get("vendorquote6"),
+          vendorquote7: urlParams.get("vendorquote7"),
+          vendorquote8: urlParams.get("vendorquote8"),
+          vendorquote9: urlParams.get("vendorquote9"),
+          vendorquote10: urlParams.get("vendorquote10"),
+          vendorquote11: urlParams.get("vendorquote11"),
+          vendorquote12: urlParams.get("vendorquote12"),
+          vendorquote13: urlParams.get("vendorquote13"),
+          vendorquote14: urlParams.get("vendorquote14"),
+          vendorquote15: urlParams.get("vendorquote15"),
+          vendorquote16: urlParams.get("vendorquote16"),
+          vendorquote17: urlParams.get("vendorquote17"),
+          vendorquote18: urlParams.get("vendorquote18"),
+          vendorquote19: urlParams.get("vendorquote19"),
+          vendorquote20: urlParams.get("vendorquote20"),
+          vendorquote21: urlParams.get("vendorquote21"),
+          vendorquote22: urlParams.get("vendorquote22"),
+          vendorquote23: urlParams.get("vendorquote23"),
+          vendorquote24: urlParams.get("vendorquote24"),
+          vendorquote25: urlParams.get("vendorquote25"),
+          vendorquote26: urlParams.get("vendorquote26"),
+          vendorquote27: urlParams.get("vendorquote27"),
+          vendorquote28: urlParams.get("vendorquote28"),
+          vendorquote29: urlParams.get("vendorquote29"),
+          vendorquote30: urlParams.get("vendorquote30"),
+        };
+
+        for (const key in formData) {
+          const inputField = document.getElementById(key);
+          if (inputField) {
+            if (inputField.tagName === "SELECT") {
+              // For dropdown/select fields
+              const option = inputField.querySelector(
+                option[value="${formData[key]}"]
+              );
+              if (option) {
+                // Check if option exists before setting it
+                inputField.value = formData[key];
+              }
+            } else {
+              // For other input fields
+              inputField.value = formData[key];
+            }
+          }
+        }
+      });
+
+      function initializeDropdown(dropdownNumber) {
+        const dropdownInput = document.querySelector(
+          .dropdown${dropdownNumber}-input
+        );
+        const dropdownList = document.querySelector(
+          .dropdown${dropdownNumber}-list
+        );
+
+        dropdownInput.addEventListener("click", function () {
+          dropdownList.style.display =
+            dropdownList.style.display === "block" ? "none" : "block";
+        });
+
+        dropdownList.addEventListener("click", function (e) {
+          if (e.target.tagName === "LI") {
+            dropdownInput.value = e.target.textContent;
+            dropdownList.style.display = "none";
+          }
+        });
+
+        document.addEventListener("click", function (e) {
+          if (
+            !dropdownInput.contains(e.target) &&
+            !dropdownList.contains(e.target)
+          ) {
+            dropdownList.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html> -->

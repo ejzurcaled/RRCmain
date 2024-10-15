@@ -1,0 +1,183 @@
+body {
+  padding: 10px;
+  margin-left: 70px;
+  font-family: Arial, sans-serif;
+  margin: 10;
+  justify-content: center;
+  align-items: center;
+}
+
+.header1 {
+  background-color: #f0f0f0;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  margin: 0 auto;
+  max-width: 100%;
+  width: calc(252px * 7);
+}
+
+#counters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* To evenly distribute the counters */
+}
+
+.card {
+  flex: 0 0 23%;
+  /* Each counter occupies maximum 23% of the container width */
+  background-color: #f4f4f4;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#leadsTable_wrapper {
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+}
+
+#leadsTable {
+  min-width: 100%;
+  /* Ensure the table occupies the full width of the container */
+}
+
+#leadsTable th,
+#leadsTable td {
+  white-space: nowrap;
+  /* Prevent text wrapping */
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex-basis: 48%;
+    /* Two counters per row on smaller screens */
+  }
+}
+
+.main-content1 {
+  width: 90%;
+  max-width: 100%;
+  background-color: #f9f9f9;
+  padding: 35px;
+  box-sizing: border-box;
+  margin: 20px;
+  z-index: 999999;
+}
+
+.datatable {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.datatable th,
+.datatable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.datatable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.datatable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style the modal */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.textbox {
+  border-width: 2px;
+  border-style: solid;
+  /* border-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0))1; */
+  border-color: rgba(0, 0, 0, 0.13);
+  border-radius: 10px;
+  margin: 1px;
+  font-size: auto;
+}
+
+textarea.jobdescription {
+  font-family: monospace;
+  white-space: pre-wrap;
+  resize: both; /* allows width and height resizing */
+}
+
+.delete-button {
+  background-color: #dc3545; /* Bootstrap danger color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for spacing */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.delete-button:active {
+  background-color: #bd2130; /* Even darker red when clicked */
+}
+
+.delete-button:disabled {
+  background-color: #6c757d; /* Grey when disabled */
+  cursor: not-allowed; /* Not allowed cursor */
+  opacity: 0.65; /* Slightly transparent */
+}

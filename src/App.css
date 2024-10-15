@@ -1,0 +1,591 @@
+.App {
+  text-align: center;
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+.red-button,
+.blue-button {
+  font-size: 18px;
+  margin: 0 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.red-result,
+.blue-result {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+}
+
+.red-circle {
+  background-color: red;
+}
+
+.blue-circle {
+  background-color: blue;
+}
+
+/* Tabs.css */
+
+/* Main container */
+.tabs-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Tab buttons container */
+.tab-buttons {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Individual tab button styles */
+.tab-button {
+  padding: 10px 20px;
+  margin: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tab-button:hover {
+  background-color: #e7e7e7;
+}
+
+/* Active tab styles */
+.tab-button.active {
+  background-color: #fff;
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+
+/* Tab icon */
+.tab-icon {
+  margin-right: 8px;
+}
+
+/* Tab content styles */
+.tab-content-wrapper {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  min-height: 100px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Transition for smoother tab content appearance */
+.tab-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When content is rendered, fade and move it in */
+.tab-content-wrapper .tab-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Account Info Tab */
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.account-header,
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input,
+.input-group select {
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  font-size: 10px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group input {
+  margin-right: 5px;
+}
+
+.create-account-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-account-btn:hover {
+  background-color: #0056b3;
+}
+
+.service-locations,
+.documentstab,
+.historytab,
+.logstab,
+.job-information {
+  padding: 10px;
+}
+
+.location-info .input-group {
+  margin-bottom: 10x;
+}
+
+.add-location-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5%;
+}
+
+.add-location-btn:hover {
+  background-color: #45a049;
+}
+
+/* styles.css */
+/* 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+} */
+
+.rrc-container {
+  background-color: white;
+  margin: 50px auto;
+  padding: 20px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rrc-heading {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rrc-subheading {
+  font-size: 15px;
+  color: #666;
+  margin-top: 20px;
+}
+
+.rrc-input {
+  height: 30px; /* Fixed width */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #333;
+}
+
+.rrc-button {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.rrc-button:hover {
+  background-color: #555;
+}
+
+.rrc-invoice-items {
+  margin-top: 20px;
+}
+
+.rrc-item-row {
+  display: flex;
+  gap: 10px;
+}
+
+.rrc-item-row input {
+  width: calc(33.33% - 10px);
+}
+
+.rrc-total {
+  margin-top: 30px;
+  font-size: 18px;
+  color: #333;
+  text-align: right;
+}
+.rrc-remove-x {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.rrc-remove-x:hover {
+  color: darkred;
+}
+
+.rrc-item-row-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rrc-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  max-width: 50%; /* You can set a max width */
+}
+
+.rrc-wide {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.rrc-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.rrc-button:hover {
+  background-color: #45a049;
+}
+
+.rrc-total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+label {
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  color: black;
+}
+
+.rrc-textarea {
+  resize: both;
+  font-size: 12px;
+  height: 32px;
+}
+
+.tax-included {
+  font-size: 0.8em; /* Adjust the size as needed */
+  color: #555; /* Optional: Change color to make it less prominent */
+}
+
+.bx-plus-circle {
+  color: #ff9900;
+  position: relative; /* Position relative to contain the absolute positioning of the text */
+}
+
+/* Styles unique to login and register containers */
+
+/* Global styles specific to login and register forms */
+.login-container,
+.register-container {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.login-container h2,
+.register-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-container form,
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Equal spacing between form elements */
+}
+
+.login-container label,
+.register-container label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+.login-container input,
+.register-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.login-container input:focus,
+.register-container input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.register-container input:focus {
+  border-color: #a6ff00; /* Register form-specific focus */
+}
+
+/* Error message for both */
+.login-container .error-message,
+.register-container .error-message {
+  color: #ff0000; /* Red text for errors */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.login-container button,
+.register-container button {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-container button:hover,
+.register-container button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Text and link styling */
+.login-container p,
+.register-container p {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.login-container a,
+.register-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-container a:hover,
+.register-container a:hover {
+  text-decoration: underline;
+}
+
+/* Specific styling for register link */
+.register-container,
+.register-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.register-container,
+.register-link:hover {
+  text-decoration: none;
+}
+
+/* Optional: better field alignment for larger screens */
+@media screen and (min-width: 768px) {
+  .login-container,
+  .register-container {
+    padding: 40px;
+  }
+
+  .login-container form,
+  .register-container form {
+    gap: 20px; /* Increased spacing for better readability */
+  }
+
+  .login-container button,
+  .register-container button {
+    padding: 14px;
+    font-size: 18px;
+  }
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.logo-login {
+  width: 280px;
+}
+
+#logo {
+  padding: 35px;
+  margin-right: -70px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+textarea.jobdescription {
+  font-family: monospace;
+  white-space: pre-wrap;
+  resize: both; /* allows width and height resizing */
+}
+
+.delete-button {
+  background-color: #dc3545; /* Bootstrap danger color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for spacing */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.edit-button {
+  background-color: #28a745; /* Bootstrap danger color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for spacing */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.notes1-button {
+  background-color: #007bff; /* Bootstrap danger color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for spacing */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.delete-button:active {
+  background-color: #bd2130; /* Even darker red when clicked */
+}
+
+.delete-button:disabled {
+  background-color: #6c757d; /* Grey when disabled */
+  cursor: not-allowed; /* Not allowed cursor */
+  opacity: 0.65; /* Slightly transparent */
+}
+
+/* Edit Button */
+.edit-button {
+  background-color: #007bff; /* Primary color */
+  color: white; /* Text color */
+}
+
+.edit-button:hover {
+  background-color: #0069d9; /* Darker blue on hover */
+}
+
+.edit-button:active {
+  background-color: #0056b3; /* Even darker blue when clicked */
+}
+
+/* Notes Button */
+.notes1-button {
+  background-color: #28a745; /* Success color */
+  color: white; /* Text color */
+}
+
+.notes1-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.notes1-button:active {
+  background-color: #1e7e34; /* Even darker green when clicked */
+}
